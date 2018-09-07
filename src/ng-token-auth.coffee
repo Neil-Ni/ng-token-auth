@@ -152,7 +152,7 @@ angular.module('ng-token-auth', ['ipCookie'])
 
           # handle the events broadcast from external auth tabs/popups
           handlePostMessage: (ev) ->
-            if ev.data.message == 'deliverCredentials'
+            if ev.data?.message == 'deliverCredentials'
               delete ev.data.message
 
               # check if a new user was registered
@@ -162,7 +162,7 @@ angular.module('ng-token-auth', ['ipCookie'])
               $rootScope.$broadcast('auth:login-success', ev.data)
               if oauthRegistration
                 $rootScope.$broadcast('auth:oauth-registration', ev.data)
-            if ev.data.message == 'authFailure'
+            if ev.data?.message == 'authFailure'
               error = {
                 reason: 'unauthorized'
                 errors: [ev.data.error]

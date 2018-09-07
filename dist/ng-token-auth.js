@@ -135,8 +135,8 @@ angular.module('ng-token-auth', ['ipCookie']).provider('$auth', function() {
               }
             },
             handlePostMessage: function(ev) {
-              var error, oauthRegistration;
-              if (ev.data.message === 'deliverCredentials') {
+              var error, oauthRegistration, _ref, _ref1;
+              if (((_ref = ev.data) != null ? _ref.message : void 0) === 'deliverCredentials') {
                 delete ev.data.message;
                 oauthRegistration = ev.data.oauth_registration;
                 delete ev.data.oauth_registration;
@@ -146,7 +146,7 @@ angular.module('ng-token-auth', ['ipCookie']).provider('$auth', function() {
                   $rootScope.$broadcast('auth:oauth-registration', ev.data);
                 }
               }
-              if (ev.data.message === 'authFailure') {
+              if (((_ref1 = ev.data) != null ? _ref1.message : void 0) === 'authFailure') {
                 error = {
                   reason: 'unauthorized',
                   errors: [ev.data.error]
